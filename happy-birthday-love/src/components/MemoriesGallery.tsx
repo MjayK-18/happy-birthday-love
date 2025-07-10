@@ -38,11 +38,18 @@ const MemoriesGallery: React.FC = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-16 px-4 bg-white/80"
+      className="py-16 px-4 bg-white/90 backdrop-blur-sm"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-pink-700 mb-10 drop-shadow">Memories Gallery</h2>
+      <motion.h2 
+        className="text-3xl sm:text-4xl md:text-5xl font-poppins font-bold text-center text-romantic-700 mb-12 drop-shadow"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        Memories Gallery
+      </motion.h2>
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
@@ -51,15 +58,19 @@ const MemoriesGallery: React.FC = () => {
         {images.map((src, i) => (
           <motion.div
             key={i}
-            className="overflow-hidden rounded-xl shadow-md bg-white"
+            className="overflow-hidden rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-shadow duration-300"
             variants={itemVariants}
-            whileHover={{ scale: 1.06, boxShadow: '0 8px 32px 0 rgba(190,24,93,0.18)' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: '0 20px 40px 0 rgba(190,24,93,0.15)',
+              transition: { type: 'spring', stiffness: 300, damping: 20 }
+            }}
+            whileTap={{ scale: 0.98 }}
           >
             <img
               src={src}
               alt={`Memory ${i + 1}`}
-              className="w-full h-56 object-cover transition-transform duration-300 ease-in-out"
+              className="w-full h-56 sm:h-64 object-cover transition-transform duration-500 hover:scale-110"
               draggable={false}
             />
           </motion.div>

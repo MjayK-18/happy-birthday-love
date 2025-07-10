@@ -1,5 +1,6 @@
 import React from 'react';
 import confetti from 'canvas-confetti';
+import { motion } from 'framer-motion';
 
 const ConfettiButton: React.FC = () => {
   const fireConfetti = () => {
@@ -47,12 +48,17 @@ const ConfettiButton: React.FC = () => {
   };
 
   return (
-    <button
+    <motion.button
       onClick={fireConfetti}
-      className="fixed top-4 right-4 z-50 bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+      className="fixed top-4 right-4 z-50 bg-gradient-to-r from-romantic-500 to-romantic-600 hover:from-romantic-600 hover:to-romantic-700 text-white font-poppins font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 backdrop-blur-sm border border-romantic-300/20"
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1, duration: 0.5 }}
     >
       🎉 Celebrate!
-    </button>
+    </motion.button>
   );
 };
 

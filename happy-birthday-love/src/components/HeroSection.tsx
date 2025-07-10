@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.5 }}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-pink-100 via-pink-200 to-pink-400"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-romantic-100 via-romantic-200 to-romantic-300"
     >
       {/* Floating Hearts */}
       {hearts.map((_, i) => {
@@ -77,18 +77,27 @@ const HeroSection: React.FC = () => {
 
       {/* Main Content */}
       <motion.div
-        className="relative z-10 flex flex-col items-center"
+        className="relative z-10 flex flex-col items-center px-4"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold text-pink-700 text-center drop-shadow-lg mb-4">
+        <motion.h1 
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-pacifico text-romantic-700 text-center drop-shadow-lg mb-6 leading-tight"
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
           {typed}
           <span className="blinking-cursor">|</span>
-        </h1>
-        <h2 className="text-xl md:text-2xl text-pink-900 font-medium text-center mb-8">
+        </motion.h1>
+        <motion.h2 
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-poppins font-medium text-romantic-800 text-center mb-8 max-w-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
           Shine Even Brighter 🌟
-        </h2>
+        </motion.h2>
       </motion.div>
 
       {/* Scroll Down Indicator */}
@@ -96,13 +105,14 @@ const HeroSection: React.FC = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 1.2, repeat: Infinity, repeatType: 'loop' }}
+        whileHover={{ scale: 1.1 }}
       >
         <div className="w-8 h-8 flex items-center justify-center">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#be185d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce">
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <span className="text-pink-700 text-sm mt-1 font-semibold">Scroll Down</span>
+        <span className="text-romantic-700 text-sm mt-1 font-poppins font-semibold">Scroll Down</span>
       </motion.div>
 
       {/* Blinking cursor style */}

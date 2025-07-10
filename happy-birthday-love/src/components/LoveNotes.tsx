@@ -17,7 +17,7 @@ const notes = [
 ];
 
 const cardColors = [
-  'bg-pink-100',
+  'bg-romantic-100',
   'bg-purple-100',
   'bg-yellow-100',
 ];
@@ -40,10 +40,17 @@ const LoveNotes: React.FC = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-16 px-4 bg-white/80"
+      className="py-16 px-4 bg-gradient-to-br from-romantic-50 to-white/90 backdrop-blur-sm"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-pink-700 mb-10 drop-shadow">Love Notes</h2>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+      <motion.h2 
+        className="text-3xl sm:text-4xl md:text-5xl font-poppins font-bold text-center text-romantic-700 mb-12 drop-shadow"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        Love Notes
+      </motion.h2>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-6xl mx-auto">
         {notes.map((note, i) => (
           <motion.div
             key={i}
@@ -55,6 +62,8 @@ const LoveNotes: React.FC = () => {
             tabIndex={0}
             onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleFlip(i)}
             aria-pressed={flipped[i]}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <div className="relative w-full h-full" style={{ perspective: 1000 }}>
               <motion.div
@@ -70,7 +79,7 @@ const LoveNotes: React.FC = () => {
                 {note.icon}
               </motion.div>
               <motion.div
-                className={`absolute w-full h-full rounded-3xl shadow-xl ${cardColors[i]} flex items-center justify-center px-6 text-center text-lg font-medium text-pink-700 transition-transform duration-500`}
+                className={`absolute w-full h-full rounded-3xl shadow-xl ${cardColors[i]} flex items-center justify-center px-6 text-center text-lg font-poppins font-medium text-romantic-700 transition-transform duration-500 leading-relaxed`}
                 style={{
                   backfaceVisibility: 'hidden',
                   transform: flipped[i] ? 'rotateY(0deg)' : 'rotateY(-180deg)',
