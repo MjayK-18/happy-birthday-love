@@ -22,6 +22,11 @@ const cardColors = [
   'bg-yellow-100',
 ];
 
+const sectionVariants = {
+  hidden: { opacity: 0, scale: 0.98, y: 40 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 1 } },
+};
+
 const LoveNotes: React.FC = () => {
   const [flipped, setFlipped] = useState([false, false, false]);
 
@@ -30,7 +35,13 @@ const LoveNotes: React.FC = () => {
   };
 
   return (
-    <section className="py-16 px-4 bg-white/80">
+    <motion.section
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="py-16 px-4 bg-white/80"
+    >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-pink-700 mb-10 drop-shadow">Love Notes</h2>
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
         {notes.map((note, i) => (
@@ -79,7 +90,7 @@ const LoveNotes: React.FC = () => {
           perspective: 1000px;
         }
       `}</style>
-    </section>
+    </motion.section>
   );
 };
 

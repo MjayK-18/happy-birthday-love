@@ -26,9 +26,20 @@ const itemVariants = {
   show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+const sectionVariants = {
+  hidden: { opacity: 0, scale: 0.98, y: 40 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 1 } },
+};
+
 const MemoriesGallery: React.FC = () => {
   return (
-    <section className="py-16 px-4 bg-white/80">
+    <motion.section
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="py-16 px-4 bg-white/80"
+    >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-pink-700 mb-10 drop-shadow">Memories Gallery</h2>
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
@@ -54,7 +65,7 @@ const MemoriesGallery: React.FC = () => {
           </motion.div>
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

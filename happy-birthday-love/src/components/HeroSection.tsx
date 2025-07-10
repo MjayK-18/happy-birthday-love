@@ -20,11 +20,22 @@ function useTypewriter(text: string, speed = 80) {
   return displayed;
 }
 
+const sectionVariants = {
+  hidden: { opacity: 0, scale: 0.98, y: 40 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 1 } },
+};
+
 const HeroSection: React.FC = () => {
   const typed = useTypewriter(typewriterText, 80);
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-pink-100 via-pink-200 to-pink-400">
+    <motion.section
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.5 }}
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-pink-100 via-pink-200 to-pink-400"
+    >
       {/* Floating Hearts */}
       {hearts.map((_, i) => {
         const size = Math.random() * 32 + 24;
@@ -107,7 +118,7 @@ const HeroSection: React.FC = () => {
           50% { opacity: 0; }
         }
       `}</style>
-    </div>
+    </motion.section>
   );
 };
 
