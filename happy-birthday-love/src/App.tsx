@@ -6,11 +6,13 @@ import FloatingBalloons from './components/FloatingBalloons';
 import ConfettiButton from './components/ConfettiButton';
 import ConfettiEffect from './components/ConfettiEffect';
 import BackgroundMusicPlayer from './components/BackgroundMusicPlayer';
+import FloatingSparkles from './components/FloatingSparkles';
 
 function App() {
   return (
     <ConfettiEffect triggerOnScroll={true} triggerOnClick={false}>
       <FloatingBalloons />
+      <FloatingSparkles />
       <ConfettiButton />
       <BackgroundMusicPlayer />
       <HeroSection />
